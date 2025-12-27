@@ -104,3 +104,4 @@ C:\Users\user\source\repos\Library\obj\Debug\net8.0\Library.genruntimeconfig.cac
 C:\Users\user\source\repos\Library\obj\Debug\net8.0\ref\Library.dll
 C:\Users\user\source\repos\Library\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Users\user\source\repos\Library\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
+C:\Users\user\source\repos\Library\obj\Debug\net8.0\Library.sourcelink.json

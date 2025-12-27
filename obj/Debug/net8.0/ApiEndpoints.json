@@ -33,12 +33,28 @@
   },
   {
     "ContainingType": "Library.Controllers.BooksController",
-    "Method": "GetAll",
+    "Method": "GetBooks",
     "RelativePath": "api/v1/books",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "include",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -69,6 +85,11 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "include",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

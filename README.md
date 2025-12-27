@@ -210,3 +210,88 @@ API построен по REST-принципам:
 ```bash
 dotnet restore
 dotnet run
+
+
+# Лабораторная работа №2: Продвинутые принципы проектирования REST API
+
+## Цель работы
+Закрепить и расширить навыки проектирования REST API, включая:  
+- Идемпотентность  
+- Безопасность  
+- Лимиты (rate limiting)  
+- Пагинацию  
+- Опциональные поля  
+- Внутренние API  
+
+---
+
+## 1. Используемые технологии
+- **C# / ASP.NET Core 7**  
+- **Entity Framework Core**  
+- **JWT аутентификация**  
+- **Swagger / OpenAPI**  
+- **SQL Server / InMemory Database** (для тестирования)  
+
+---
+
+## 2. Основные изменения по сравнению с ЛР №1
+
+### 2.1 Безопасность и лимиты
+- Добавлена **JWT-аутентификация** для всех публичных методов API.  
+- Реализовано **ограничение частоты запросов** через middleware (`X-Limit-Remaining`, `Retry-After`).  
+- Методы с изменением данных (POST, PUT, DELETE) **идемпотентны**, повторные запросы не ломают данные.
+
+---
+
+### 2.2 Пагинация
+- Конечные точки, возвращающие списки (`/api/books`, `/api/loans`), поддерживают параметры:
+  - `page` — номер страницы  
+  - `pageSize` — количество элементов на странице  
+
+### 2.3 Опциональные поля
+- Позволяет выбирать, какие поля возвращать через параметр include:
+  - GET /api/books/1?include=Title,Author
+
+### 2.4 Внутренние API
+- Добавлен внутренний эндпоинт /internal/stats/books-count:
+  - GET /internal/stats/books-count
+
+## 3. Примеры запросов
+
+### 3.1 Получение книг с пагинацией и опциональными полями
+- GET /api/books?page=1&pageSize=5&include=Title,Author
+- Authorization: Bearer {token}
+
+```json
+{
+  "page": 1,
+  "pageSize": 5,
+  "total": 23,
+  "data": [
+    { "Title": "Book 1", "Author": "Author 1" },
+    { "Title": "Book 2", "Author": "Author 2" }
+  ]
+}```
+
+### 3.2 Создание новой книги
+- POST /api/books
+- Authorization: Bearer {token}
+- Content-Type: application/json
+
+```json
+{
+  "Title": "New Book",
+  "Author": "New Author",
+  "Year": 2025
+}
+
+### 3.3 Получение конкретной книги с выбором полей
+- GET /api/books/1?include=Title,Year
+- Authorization: Bearer {token}
+
+```json
+{
+  "Title": "Book 1",
+  "Year": 2022
+}
+
