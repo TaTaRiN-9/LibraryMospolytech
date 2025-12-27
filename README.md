@@ -1,4 +1,4 @@
-# 📚 Library REST API  
+# Library REST API  
 **Лабораторная работа №1 «Проектирование и реализация REST API»**
 
 ---
