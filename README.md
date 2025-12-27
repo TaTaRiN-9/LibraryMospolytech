@@ -210,7 +210,7 @@ API построен по REST-принципам:
 ```bash
 dotnet restore
 dotnet run
-
+```
 
 # Лабораторная работа №2: Продвинутые принципы проектирования REST API
 
@@ -271,7 +271,8 @@ dotnet run
     { "Title": "Book 1", "Author": "Author 1" },
     { "Title": "Book 2", "Author": "Author 2" }
   ]
-}```
+}
+```
 
 ### 3.2 Создание новой книги
 - POST /api/books
@@ -284,6 +285,7 @@ dotnet run
   "Author": "New Author",
   "Year": 2025
 }
+```
 
 ### 3.3 Получение конкретной книги с выбором полей
 - GET /api/books/1?include=Title,Year
@@ -294,4 +296,5 @@ dotnet run
   "Title": "Book 1",
   "Year": 2022
 }
+```
 
